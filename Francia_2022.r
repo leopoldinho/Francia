@@ -34,7 +34,7 @@ francia_ballottaggio_2022 <- francia_ballottaggio_2022 %>%
                                                ifelse(LE.PEN.exp > "60.00" & LE.PEN.exp < "64.99","Le Pen 3",
                                                       ifelse(LE.PEN.exp > "65.00" & LE.PEN.exp < "69.99","Le Pen 4",
                                                              ifelse(LE.PEN.exp > "70.00" & LE.PEN.exp < "74.99","Le Pen 5",
-                                                                    ifelse(LE.PEN.exp > "75.00","Le Pen 6",""))))))))%>%
+                                                                    ifelse(LE.PEN.exp > "76.00","Le Pen 6",""))))))))%>%
   unite(Risultato, c("Vantaggio_Macron", "Vantaggio_LePen"), sep = "")
 
 
