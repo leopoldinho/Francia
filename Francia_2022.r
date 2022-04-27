@@ -42,4 +42,4 @@ francia_ballottaggio_2022 <- francia_ballottaggio_2022 %>%
 
 
 
-write.csv(francia_ballottaggio_2022, "ballottaggio_Francia_22.csv",fileEncoding="UTF-8")
+write.csv(francia_ballottaggio_2022, "ballottaggio_Francia_22_new.csv",fileEncoding="UTF-8")
