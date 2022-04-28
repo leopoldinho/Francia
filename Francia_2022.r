@@ -4,7 +4,7 @@ library(googlesheets4)
 
 #Dependencies
 francia_secondo_turno_2022 <- read.csv("https://raw.githubusercontent.com/leopoldinho/Francia/main/p2022-resultats-communes-t2.csv", encoding = "UTF-8")%>%
-  select(CODGEO=X.U.FEFF.CodeInsee,Commune,Abstentions_ins,MACRON.exp,LE.PEN.exp)%>%
+  select(CODGEO=X.U.FEFF.CodeInsee,Commune,Abstentions_ins,MACRON.exp,LE.PEN.exp, MACRON, LE.PEN)%>%
   mutate_if(is.numeric, round, 2)
 redditi_2019_comuni_francia <- read.csv2("https://raw.githubusercontent.com/leopoldinho/Francia/main/cc_filosofi_2019_COM.CSV")%>%
   select(CODGEO,MED19, TP6019)
@@ -40,6 +40,8 @@ francia_ballottaggio_2022 <- francia_ballottaggio_2022 %>%
                                                                     ifelse(LE.PEN.exp > "74.99","Le Pen 6","")))))))))%>%
   unite(Risultato, c("Vantaggio_Macron", "Vantaggio_LePen"), sep = "")
 
-
-
 write.csv(francia_ballottaggio_2022, "ballottaggio_Francia_22_new.csv",fileEncoding="UTF-8")
+
+francia_ballottaggio_2022_poveri <- francia_ballottaggio_2022 %>%
+  filter(MED19<="20000") %>%
+  mutate(Tot_macron=sum(MACRON), Tot_lePen=sum(LE.PEN))
